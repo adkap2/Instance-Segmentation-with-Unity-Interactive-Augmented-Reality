@@ -25,6 +25,10 @@ Interactive Augmented Reality for Semantic Segmentation on Indoor Environments
 
 
 3. Unity create 3D object such as a cube and use python to move the cube up then down, left then right
+
+- Modified code from [here](https://github.com/CanYouCatchMe01/CSharp-and-Python-continuous-communication)
+  to move the cube up and down, left and right
    
 <img src= "videos/unity_cube_move.gif" alt = "gif" width = "400"/>
+
 
