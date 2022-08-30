@@ -24,6 +24,7 @@ Interactive Augmented Reality for Semantic Segmentation on Indoor Environments
 <img src="images/Screen%20Shot%202022-08-30%20at%2010.41.14%20AM.png" alt="image", width ="800"/>
 
 
-
-
+3. Unity create 3D object such as a cube and use python to move the cube up then down, left then right
+   
+<img src= "videos/unity_cube_move.gif" alt = "gif" width = "400"/>
 
