@@ -13,3 +13,17 @@ Interactive Augmented Reality for Semantic Segmentation on Indoor Environments
     Establish readme for each task
 
 
+1. Install Unity
+
+<img src="images/Screen Shot 2022-08-30 at 10.45.50 AM.png" alt = "image" width ="400"/>
+
+
+2. Python hello world displayed under unity
+
+<img src="images/Screen Shot 2022-08-30 at 10.41.07 AM.png" alt = "image" width ="400"/>
+<img src="images/Screen%20Shot%202022-08-30%20at%2010.41.14%20AM.png" alt="image", width ="800"/>
+
+
+
+
+
