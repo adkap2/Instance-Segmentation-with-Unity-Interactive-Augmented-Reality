@@ -71,4 +71,10 @@ Interactive Augmented Reality for Semantic Segmentation on Indoor Environments
    - Or Use Google Colab to run YoloACT
 
 2. For now running in Google Colab [here](https://colab.research.google.com/drive/1ncRxvmNR-iTtQCscj2UFSGV8ZQX_LN0M)
-3. 
+
+
+## COCO Annotator
+
+1. Install COCO Annotator [here](https://github.com/jsbroks/coco-annotator/wiki/Getting-Started)
+2. Run the Docker container
+3. Go to `localhost:5000`
