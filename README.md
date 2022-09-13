@@ -62,4 +62,13 @@ Interactive Augmented Reality for Semantic Segmentation on Indoor Environments
   File "/Users/adam/Desktop/SJSU/CMPE295A/CMPE-295/Unity_Tutorial/Unity Karting MicroGame Tutorial/venv/lib/python3.7/site-packages/mlagents_envs/environment.py", line 135, in __init__
     f"The API number is not compatible between Unity and python. "
 
-    
+
+## YoloACT
+
+1. Install YoloACT [here](https://github.com/dbolya/yolact)
+   - YoloAct requires CUDA to run, my local computer does not have NVIDIA GPU
+   - May need to clone the repo to SJSU HPC1 to run FULL YOLOACT with CUDA
+   - Or Use Google Colab to run YoloACT
+
+2. For now running in Google Colab [here](https://colab.research.google.com/drive/1ncRxvmNR-iTtQCscj2UFSGV8ZQX_LN0M)
+3. 
