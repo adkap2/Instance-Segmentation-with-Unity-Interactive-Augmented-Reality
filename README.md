@@ -81,8 +81,12 @@ Interactive Augmented Reality for Semantic Segmentation on Indoor Environments
 4. Go to `localhost:5000`
 5. Annotated custom dataset containing cats and dogs
    1. Created bounding box around images:
+
+
       <img src = "Pets/pet_screenshot0.png" alt = "annotator" width = "300"/>
-    2. Exported annotations as JSON file
+    1. Exported annotations as JSON file
+
+
       <img src = "Pets/pet_screenshot1.png" alt = "export" width = "300"/>
 
       `{"images": [{"id": 8, "dataset_id": 3, "category_ids": [], "path": "/datasets/Pets/cat0.jpeg", "width": 1240, "height": 698, "file_name": "cat0.jpeg", "annotated": false, "annotating": [], "num_annotations": 0, "metadata": {}, "deleted": false, "milliseconds": 0, "events": [], "regenerate_thumbnail": false}`
