@@ -75,6 +75,14 @@ Interactive Augmented Reality for Semantic Segmentation on Indoor Environments
 
 ## COCO Annotator
 
-1. Install COCO Annotator [here](https://github.com/jsbroks/coco-annotator/wiki/Getting-Started)
-2. Run the Docker container
-3. Go to `localhost:5000`
+1. Follow this [tutorial](https://www.youtube.com/watch?v=OMJRcjnMMok)
+2. Install COCO Annotator [here](https://github.com/jsbroks/coco-annotator/wiki/Getting-Started)
+3. Run the Docker container
+4. Go to `localhost:5000`
+5. Annotated custom dataset containing cats and dogs
+   1. Created bounding box around images:
+      <img src = "Pets/pet_screenshot0.png" alt = "annotator" width = "300"/>
+    2. Exported annotations as JSON file
+      <img src = "Pets/pet_screenshot1.png" alt = "export" width = "300"/>
+
+      `{"images": [{"id": 8, "dataset_id": 3, "category_ids": [], "path": "/datasets/Pets/cat0.jpeg", "width": 1240, "height": 698, "file_name": "cat0.jpeg", "annotated": false, "annotating": [], "num_annotations": 0, "metadata": {}, "deleted": false, "milliseconds": 0, "events": [], "regenerate_thumbnail": false}`
