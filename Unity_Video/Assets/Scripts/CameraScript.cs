@@ -1,7 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using NetMQ;
+using NetMQ.Sockets;
+using System.Linq;
+using System;
+using System.IO;
+using System.IO.Compression;
+using Newtonsoft.Json;
 
 public class CameraScript : MonoBehaviour
 {
@@ -14,9 +22,18 @@ public class CameraScript : MonoBehaviour
 
     public Text startStopText;
 
-    private Texture2D tex2d;
+    // ZeroMQ socket for sending data
+    PublisherSocket socket;
 
-    public Image CameraImage;
+    void Start()
+    {
+        // create a ZeroMQ socket and bind it to the specifed endpoint\
+        socket = new PublisherSocket();
+        socket.Bind("tcp://*:5555");
+
+    }
+
+
 
     public void SwapCam_Clicked()
     {
@@ -46,30 +63,61 @@ public class CameraScript : MonoBehaviour
         {
             StopWebcam();
             startStopText.text = "Start Camera";
+            Console.WriteLine("Hello World!");
         }
         else // Start the Camera
         {
             WebCamDevice device = WebCamTexture.devices[currentCamIndex];
             tex = new WebCamTexture(device.name);
             display.texture = tex;
+
             // start the camera
             tex.Play();
-            tex2d = new Texture2D(tex.width, tex.height);
-            CameraImage.material.mainTexture = tex2d;
 
+            Debug.Log("Camera Started");
 
             startStopText.text = "Stop Camera";
-
-
         }
     }
 
     public void Update()
     {
-        if (tex.isPlaying)
+
+        Debug.Log("Update");
+        // System.Threading.Thread.Sleep(3);
+
+        if (tex != null)
         {
-            var rawImage = text.GetPixels32();
-            
+            // Convert the webcam data to a byte array andf send it using the ZeroMQ socket
+            Color32[] pixels = tex.GetPixels32();
+            // load the pixels into a byte array
+            byte[] buffer = new byte[pixels.Length * 4];
+
+            for (int i = 0; i < pixels.Length; i++)
+            {
+                Color32 c = pixels[i];
+                buffer[i * 4] = c.r;
+                buffer[i * 4 + 1] = c.g;
+                buffer[i * 4 + 2] = c.b;
+                buffer[i * 4 + 3] = c.a;
+            }
+
+
+            Debug.Log(buffer.Length);
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (GZipStream gzip = new GZipStream(ms, CompressionMode.Compress))
+                {
+                    gzip.Write(buffer, 0, buffer.Length);
+                }
+                byte[] compressedImageData = ms.ToArray();
+
+                socket.SendFrame(compressedImageData);
+            }
+
+            Debug.Log("Sent data" + buffer.Length);
+
         }
     }
 
@@ -78,6 +126,11 @@ public class CameraScript : MonoBehaviour
         display.texture = null;
         tex.Stop();
         tex = null;
+    }
+
+    private void OnDestroy()
+    {
+        socket.Dispose();
     }
 
 }
