@@ -190,6 +190,7 @@ SyntheticHome = dataset_base.copy({
     # 'class_names': ("Door", "Chair", "Table_Dining", "Bed", "Sofa", "Bench", "Window_glass"),
 
     'class_names': ("Bed", "Table_Dining", "Chair", "Door", "Sofa", "Bench", "Window_glass"),
+    # Still may be incorrect
     
 
     # 'class_names': ("Sofa", "Chair", "Door", "Table_Dining", "Bed", "Bench", "Window_glass"),
