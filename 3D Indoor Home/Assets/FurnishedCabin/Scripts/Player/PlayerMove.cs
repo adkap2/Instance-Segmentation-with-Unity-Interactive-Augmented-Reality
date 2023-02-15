@@ -25,7 +25,8 @@ public class PlayerMove : MonoBehaviour
 
     private void PlayerMovement()
     {
-        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;     //CharacterController.SimpleMove() applies deltaTime
+        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;     
+        // CharacterController.SimpleMove() //  applies deltaTime
         float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
 
         Vector3 forwardMovement = transform.forward * vertInput;
