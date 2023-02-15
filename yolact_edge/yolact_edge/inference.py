@@ -145,7 +145,8 @@ class YOLACTEdgeInference(object):
         global args
         args = parse_args()
         args.dataset = dataset
-        args.score_threshold = 0.15
+        # Modifying threshold
+        args.score_threshold = 0.12
         set_dataset(args.dataset)
         for item in args_ovr:
             if item in args:
