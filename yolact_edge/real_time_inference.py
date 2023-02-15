@@ -81,11 +81,17 @@ while True:
         image_data = gzip.decompress(data)
 
         img = np.frombuffer(image_data, dtype=np.uint8)
+
         img = img.reshape((480, 640, 4))
+        img = cv2.resize(img, (1280, 960))
+        # img = 
         # # Flip image
         img = cv2.flip(img, 0)
         # # Convert to RGB
         img = cv2.cvtColor(img, cv2.COLOR_BGRA2RGB)
+
+        img = cv2.convertScaleAbs(img, alpha=3.5, beta=5)
+
         # Time inference
 
         # t3 = time.time()
@@ -98,8 +104,11 @@ while True:
         print(f"Average {1 / (time.time() - prev_time)} FPS")
 
         if p:
-
-            cv2.imshow("Webcam", p['img'])
+           
+            cv2.imshow("Garnet Cam", p['img'])
+            # cv2.resizeWindow("Garnet Cam", 1280, 960)
+            # Change window size
+            
             cv2.waitKey(1)
         else:
             print("No prediction")
