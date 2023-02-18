@@ -48,6 +48,7 @@ config_ovr = {
 model_inference = YOLACTEdgeInference(
     weights, config, dataset, calib_images, config_ovr)
 
+
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
 
@@ -84,13 +85,16 @@ while True:
 
         img = img.reshape((480, 640, 4))
         img = cv2.resize(img, (1280, 960))
-        # img = 
+
+        # img = img.reshape((320, 512, 4))
+        # img = cv2.resize(img, (1024, 640))
+
         # # Flip image
         img = cv2.flip(img, 0)
         # # Convert to RGB
         img = cv2.cvtColor(img, cv2.COLOR_BGRA2RGB)
 
-        img = cv2.convertScaleAbs(img, alpha=3.5, beta=5)
+        # img = cv2.convertScaleAbs(img, alpha=3.5, beta=5)
 
         # Time inference
 
@@ -105,7 +109,7 @@ while True:
 
         if p:
            
-            cv2.imshow("Garnet Cam", p['img'])
+            cv2.imshow("Unity Cam", p['img'])
             # cv2.resizeWindow("Garnet Cam", 1280, 960)
             # Change window size
             
