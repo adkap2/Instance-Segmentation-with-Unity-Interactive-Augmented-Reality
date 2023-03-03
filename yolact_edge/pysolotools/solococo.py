@@ -6,8 +6,8 @@ import os
 # sequence_path = "./solo_4"
 # output_path = "./output_data"
 
-sequence_path =  "../../../../../media/adam/WinStorage/SyntheticHomes/solo"
-output_path = "../../../../../media/adam/WinStorage/SyntheticHomes/output"
+sequence_path =  "../../../../../../../media/adam/WinStorage/SyntheticHomes/solo_2"
+output_path = "../../../../../../../media/adam/WinStorage/SyntheticHomes/output_2"
 # sequence_path = "./validation_data_input"
 # output_path = "./val_data_output"
 

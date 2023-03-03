@@ -1256,7 +1256,11 @@ class Yolact(nn.Module):
         if args is not None and (args.coco_transfer or args.yolact_transfer):
             logger.warning("`--coco_transfer` or `--yolact_transfer` is no longer needed. The code will automatically detect and convert YOLACT-trained weights now.")
 
-        self.load_state_dict(state_dict)
+        try:
+            self.load_state_dict(state_dict)
+        except RuntimeError as e:
+            print('Ignoring " ' + str(e)+ '"')
+
 
         if not self.training:
             self.create_partial_backbone()

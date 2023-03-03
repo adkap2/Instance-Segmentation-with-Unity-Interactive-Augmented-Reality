@@ -177,3 +177,4 @@ def convert_to_tensorrt(net, cfg, args, transform):
         net.to_tensorrt_flow_net(cfg.torch2trt_flow_net_int8, calibration_dataset=calibration_flow_net_dataset, batch_size=args.trt_batch_size)
 
     logger.info("Converted to TensorRT.")
+    torch.save(net.state_dict(), "converted.pth")

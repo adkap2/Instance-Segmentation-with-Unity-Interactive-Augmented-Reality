@@ -170,30 +170,14 @@ dataset_base = Config({
 })
 
 SyntheticHome = dataset_base.copy({
-
     'name': 'SyntheticHome',
-
-
     'train_images': '../../../../../../media/adam/WinStorage/SyntheticHomes/train/data/',
     'train_info':   '../../../../../../media/adam/WinStorage/SyntheticHomes/train/labels.json',
-
     'valid_images': '../../../../../../media/adam/WinStorage/SyntheticHomes/val/data/',
     'valid_info':   '../../../../../../media/adam/WinStorage/SyntheticHomes/val/labels.json',
-
-
     'label_map': {0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:7},
-
     # Turns out the label map was mixed around, so I had to fix it.
-    # 'label_map': {1:5, 2:2, 3:1, 4:3, 5:4, 6:6, 7:7},
-    #'label_map': {1:5, 2:2, 3:1, 4:3, 5:4, 6:6, 7:7},
-
-    # 'class_names': ("Door", "Chair", "Table_Dining", "Bed", "Sofa", "Bench", "Window_glass"),
-
     'class_names': ("Bed", "Bench", "Chair", "Door", "Sofa", "Table", "Window_glass"),
-    # Still may be incorrect
-    
-
-    # 'class_names': ("Sofa", "Chair", "Door", "Table_Dining", "Bed", "Bench", "Window_glass"),
 })
 
 
@@ -556,8 +540,8 @@ coco_base_config = Config({
 
     # dw' = momentum * dw - lr * (grad + decay * w)
     # Slowing learning rate for custom dataset
-    # 'lr': 1e-3,
-    'lr': 1e-4,
+    'lr': 1e-5,
+    #'lr': 1e-3,
     'momentum': 0.9,
     'decay': 5e-4,
 
@@ -753,16 +737,11 @@ coco_base_config = Config({
 
 yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
-
-
     # Dataset stuff
     # 'dataset': coco2017_dataset,
     'dataset': SyntheticHome,
-
     #'dataset': coco_test_2017_dataset,
-
     #'num_classes': len(coco2017_dataset.class_names) + 1,
-    # 'num_classes': len(my_indoor_env_dataset.class_names) + 1,
     'num_classes': len(SyntheticHome.class_names) + 1,
     # 'num_classes': len(coco2017_dataset.class_names) + 1,
 
@@ -775,7 +754,8 @@ yolact_base_config = coco_base_config.copy({
     'max_iter': 800000,
 
     'flow': flow_base,
-    
+    # 'flow': None,
+
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
         'selected_layers': list(range(1, 4)),

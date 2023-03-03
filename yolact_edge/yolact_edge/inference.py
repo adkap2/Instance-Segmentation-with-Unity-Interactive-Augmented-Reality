@@ -140,10 +140,8 @@ class YOLACTEdgeInference(object):
         cfg.dataset.calib_images = calib_images
         cfg.replace(cfg.copy(config_ovr))
 
-
-
         global args
-        args = parse_args()
+        args = parse_args("")
         args.dataset = dataset
         # Modifying threshold
         args.score_threshold = 0.12
@@ -170,6 +168,7 @@ class YOLACTEdgeInference(object):
             net = net.cuda()
             self.net = net
             print("Model ready for inference...")
+
 
     def prep_output(self, dets_out, img, h, w, undo_transform=True, class_color=False, mask_alpha=0.45):
         """
