@@ -1,0 +1,76 @@
+{
+"prefab_dirs":
+[
+    {
+        "path_in": "Assets/Complete_Home_Interior_Pack/CHIP_Prefabs/PRE_Appliances/PRE_APP_Toaster",
+        "prefabs":
+        [
+            {
+                "name": "MOD_APP_Toaster_01",
+                "names_out": ["PRE_APP_Toaster_01"]
+            },
+            {
+                "name": "MOD_APP_Toaster_02",
+                "names_out": ["PRE_APP_Toaster_02"]
+            },
+            {
+                "name": "MOD_APP_Toaster_03",
+                "names_out": ["PRE_APP_Toaster_03"]
+            },
+            {
+                "name": "MOD_APP_Toaster_04",
+                "names_out": ["PRE_APP_Toaster_04"]
+            },
+            {
+                "name": "MOD_APP_Toaster_05",
+                "names_out": ["PRE_APP_Toaster_05"]
+            },
+            {
+                "name": "MOD_APP_Toaster_06",
+                "names_out": ["PRE_APP_Toaster_06"]
+            }
+        ]
+    },
+    {
+        "path_out": ["Props", "Kitchen"],
+        "path_in": "Assets/Complete_Home_Interior_Pack/CHIP_Models/MOD_Props",
+        "models":
+        [
+            {
+                "name": "MOD_PRO_Cooking_pot_lid_01",
+                "ext": ".fbx",
+                "mat_full_path": "Assets/Complete_Home_Interior_Pack/CHIP_Materials/MAT_Metal/MAT_MET_Metal_03_01_01_metal",
+                "name_out": "PotLid_1"
+            }
+        ]
+    },
+    {
+        "path_out": ["Props", "Kitchen"],
+        "path_in": "Assets/Complete_Home_Interior_Pack/CHIP_Models/MOD_Appliances",
+        "models":
+        [
+            {
+                "name": "MOD_APP_Oven_tray_01",
+                "ext": ".fbx",
+                "mat_full_path": "Assets/Complete_Home_Interior_Pack/CHIP_Materials/MAT_Metal/MAT_MET_Metal_03_01_01_metal",
+                "name_out": "OvenTray_1"
+            }
+        ]
+    },
+    {
+        "path_out": ["Props"],
+        "path_in": "Assets/Complete_Home_Interior_Pack/CHIP_Models/MOD_Props",
+        "models":
+        [
+            {
+                "name": "MOD_PRO_Towel_01",
+                "ext": ".fbx",
+                "mat_full_path": "Assets/Complete_Home_Interior_Pack/CHIP_Materials/MAT_Props/MAT_PRO_Props_01",
+                "name_out": "Towel_hanged_1"
+            }
+        ]
+    }
+],
+"package_old_path": "Assets/Complete_Home_Interior_Pack",
+"package_new_path": "Assets/Resources/Complete_Home_Interior_Pack"
+}
