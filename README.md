@@ -69,6 +69,23 @@ Additionally, this readme provides instructions for installing and using Unity's
 
 Each section includes installation instructions, configuration file modifications, and executable execution details, providing a comprehensive guide for users to train and evaluate models with these tools.
 
+This GIF represents the yolact_edge inference in real-time from the COCO pretrained model
+
+
+
+<div style="display:flex;justify-content:center;">
+  <figure style="margin-right:20px;">
+    <img src="videos/coco_trained_model.gif" width="320" height="240" alt="YOLACT pretrained model from COCO Dataset">
+    <figcaption>YOLACT pretrained model from COCO Dataset</figcaption>
+  </figure>
+  <figure style="margin-left:20px;">
+    <img src="videos/adam_trained_original.gif" width="320" height="240" alt="Custom trained model from Synthetic Indoor Home environment dataset">
+    <figcaption style="text-align:center;">Custom trained model from Synthetic dataset</figcaption>
+  </figure>
+</div>
+
+
+
 
 ### Built With
 
