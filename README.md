@@ -86,6 +86,32 @@ This GIF represents the yolact_edge inference in real-time from the COCO pretrai
   </div>
 </div>
 
+| YOLACT pretrained model from COCO Dataset | Custom trained model from Synthetic Indoor Home environment dataset |
+| :---: | :---: |
+| ![YOLACT pretrained model from COCO Dataset](videos/coco_trained_model.gif) | ![Custom trained model from Synthetic Indoor Home environment dataset](videos/adam_trained_original.gif) |
+| YOLACT pretrained model from COCO Dataset | Custom trained model from Synthetic Indoor Home environment dataset |
+
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  table, th, td {
+    border: none;
+  }
+</style>
+
+<table>
+  <tr>
+    <td align="center" style="padding: 10px;">
+      <img src="videos/coco_trained_model.gif" alt="YOLACT pretrained model from COCO Dataset" width="320" height="240"><br>
+      YOLACT pretrained model from COCO Dataset
+    </td>
+    <td align="center" style="padding: 10px;">
+      <img src="videos/adam_trained_original.gif" alt="Custom trained model from Synthetic Indoor Home environment dataset" width="320" height="240"><br>
+      Custom trained model from Syntheticdataset
+    </td>
+  </tr>
+</table>
 
 
 
