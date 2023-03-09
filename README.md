@@ -65,28 +65,36 @@ This document outlines the steps to use Yolact, a fully convolutional model for 
 
 Additionally, this readme provides instructions for installing and using Unity's VirtualHome program, which simulates multi-agent tasks in home-like environments. The readme also includes details on the Unity Synthetic Homes dataset generator, which produces photorealistic images for use with computer vision models, and FiftyOne, an open-source tool used for curating and modifying image datasets for training computer vision models.
 
+## IP Socket Communication
 
+To perform real-time object detection and segmentation on frames generated within the Unity VirtualHome environment, I utilized IP socket communication with the NetMQ Library to exchange data between the C# (Unity) VirtualHome Application and a Python (Yolact_Edge) program. I added a script to the (Unity) Virtual Agents application to capture each frame and send them over the socket to the Yolact_Edge inferencing program for processing.
 
-Each section includes installation instructions, configuration file modifications, and executable execution details, providing a comprehensive guide for users to train and evaluate models with these tools.
+To optimize the transfer of data, I implemented file compression using the GZIP algorithm before sending each frame over the socket. This reduced the size of the data being transferred, resulting in faster processing times and reduced bandwidth requirements.
 
-This GIF represents the yolact_edge inference in real-time from the COCO pretrained model
+The IP socket communication was implemented using the TCP/IP protocol, which ensured reliable and ordered data transfer between the two applications. The C# application acted as the client, while the Python application acted as the server, listening for incoming data on a specified port.
 
+Once the Yolact_Edge inferencing program received the compressed frame over the socket, it decompressed the data, performed instance segmentation using the specified YolactEdge trained weights and object classes. Then, using OpenCV, it rendered the results within a generated window. 
 
+Overall, the use of IP socket communication and file compression enabled efficient and seamless communication between the two applications, facilitating real-time inference from frames generated within the Unity VirtualHome environment.
+eal-time instance segmentation inference was performed within the Unity VirtualHome Environment
 
+#### The GIFs below display each frame generated from the Unity VirtualHome Environment, after undergoing real-time instance segmentation inference and post-processing.
 
 
 <table>
   <tr>
     <td align="center" style="padding: 10px;">
-      <img src="videos/coco_trained_model.gif" alt="YOLACT pretrained model from COCO Dataset" width="320" height="240"><br>
-      YOLACT pretrained model from COCO Dataset
+      <img src="videos/coco_trained_model.gif" alt="YOLACT pretrained model from COCO Dataset" width="400" height="350"><br>
+      YOLACT pretrained model from the COCO Dataset
     </td>
     <td align="center" style="padding: 10px;">
-      <img src="videos/adam_trained_original.gif" alt="Custom trained model from Synthetic Indoor Home environment dataset" width="320" height="240"><br>
-      Custom trained model from Syntheticdataset
+      <img src="videos/adam_trained_original.gif" alt="Custom trained model from Synthetic Indoor Home environment dataset" width="400" height="350"><br>
+      Custom trained model from a Synthetic dataset
     </td>
   </tr>
 </table>
+
+### Notes on the Trained Models:
 
 
 
