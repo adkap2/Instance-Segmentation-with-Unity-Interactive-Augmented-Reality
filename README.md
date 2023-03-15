@@ -136,8 +136,8 @@ To recreate the project, follow the instructions located in the documents folder
 
 * [Synthetic Homes Data Generation](documentation/SyntheticHomes_Data_Generator_README.pdf)
 * [Yolact Install and Usage](documentation/Yolact_Training_README.pdf)
-* [Fiftyone Installations and Usage](documentation/FiftyOne_README.pdf)
-* [Unity Virtual Home Installations and Usage](documentation/Unity_Virtual_Home_README.pdf)
+* [Fiftyone Installations and Usage](documentation/FiftyOne_Data_Mod_README.pdf)
+* [Unity Virtual Home Installations and Usage](documentation/Unity_VirtualHome_README.pdf)
 
 ### Prerequisites
 
