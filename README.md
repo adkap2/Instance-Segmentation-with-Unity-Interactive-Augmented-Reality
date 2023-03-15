@@ -84,7 +84,7 @@ eal-time instance segmentation inference was performed within the Unity VirtualH
 <table>
   <tr>
     <td align="center" style="padding: 10px;">
-      <img src="videos/coco_trained_model.gif" alt="YOLACT pretrained model from COCO Dataset" width="400" height="350"><br>
+      <img src="videos/coco_trained_filtered_classes_trimmed.gif" alt="YOLACT pretrained model from COCO Dataset" width="400" height="350"><br>
       YOLACT pretrained model from the COCO Dataset
     </td>
     <td align="center" style="padding: 10px;">
