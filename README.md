@@ -84,7 +84,7 @@ eal-time instance segmentation inference was performed within the Unity VirtualH
 <table>
   <tr>
     <td align="center" style="padding: 10px;">
-      <img src="videos/coco_trained_model.gif" alt="YOLACT pretrained model from COCO Dataset" width="400" height="350"><br>
+      <img src="videos/coco_trained_filtered_classes_trimmed.gif" alt="YOLACT pretrained model from COCO Dataset" width="400" height="350"><br>
       YOLACT pretrained model from the COCO Dataset
     </td>
     <td align="center" style="padding: 10px;">
@@ -136,8 +136,8 @@ To recreate the project, follow the instructions located in the documents folder
 
 * [Synthetic Homes Data Generation](documentation/SyntheticHomes_Data_Generator_README.pdf)
 * [Yolact Install and Usage](documentation/Yolact_Training_README.pdf)
-* [Fiftyone Installations and Usage](documentation/FiftyOne_README.pdf)
-* [Unity Virtual Home Installations and Usage](documentation/Unity_Virtual_Home_README.pdf)
+* [Fiftyone Installations and Usage](documentation/FiftyOne_Data_Mod_README.pdf)
+* [Unity Virtual Home Installations and Usage](documentation/Unity_VirtualHome_README.pdf)
 
 ### Prerequisites
 
