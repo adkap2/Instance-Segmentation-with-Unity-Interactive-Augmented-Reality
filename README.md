@@ -20,7 +20,7 @@
 -->
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/adkap2/Instance-Segmentation-with-Unity-Interactive-Augmented-Reality?style=for-the-badge)
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 
 
@@ -61,7 +61,7 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-This document outlines the steps to use Yolact, a fully convolutional model for real-time instance segmentation, on a custom dataset for processing indoor environments. The dataset is synthetically generated using Unity's SyntheticHome application and requires modifications to various training files, along with a pretrained weights file. Mean Average Precision (mAP) is the primary precision metric used for training and evaluation.
+This document outlines the steps to use YolactEdge, a fully convolutional edge computing model for real-time instance segmentation, on a custom dataset for processing indoor environments. The dataset is synthetically generated using Unity's SyntheticHome application and requires modifications to various training files, along with a pretrained weights file. Mean Average Precision (mAP) is the primary precision metric used for training and evaluation.
 
 Additionally, this readme provides instructions for installing and using Unity's VirtualHome program, which simulates multi-agent tasks in home-like environments. The readme also includes details on the Unity Synthetic Homes dataset generator, which produces photorealistic images for use with computer vision models, and FiftyOne, an open-source tool used for curating and modifying image datasets for training computer vision models.
 
@@ -135,8 +135,8 @@ This section lists major frameworks and libraries that were used to create the p
 To recreate the project, follow the instructions located in the documents folders. The documents folder contains the following files:
 
 * [Synthetic Homes Data Generation](documentation/SyntheticHomes_Data_Generator_README.pdf)
-* [Yolact Install and Usage](documentation/Yolact_Training_README.pdf)
-* [Fiftyone Installations and Usage](documentation/FiftyOne_Data_Mod_README.pdf)
+* [YolactEdge Installation, Training, and Inference](documentation/YolactEdge_Instance_Segmentation_README.pdf)
+* [Fiftyone Installations and Usage](documentation/FiftyOne_README.pdf)
 * [Unity Virtual Home Installations and Usage](documentation/Unity_VirtualHome_README.pdf)
 
 ### Prerequisites
@@ -150,30 +150,6 @@ To recreate the project, follow the instructions located in the documents folder
   * Windows 10
 
 
-### Installation
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Add "frequently asked questions" document
-- [ ] 
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
