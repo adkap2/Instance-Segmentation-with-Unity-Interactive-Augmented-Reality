@@ -85,24 +85,6 @@ COCO_INTER_LABEL_MAP = {COCO_INV_LABEL_MAP[COCO_CLASSES.index(coco) + 1]: COCO_C
 MOTS_CLASSES = ('car', 'pedestrian')
 MOTS_LABEL_MAP = {1: 1, 2: 2}
 
-CONCAT_COCO_CLASSES = ('person', 'bottle', 'fork', 'knife', 'bed', 'chair', 'toilet', 'tv', 'laptop', 'dining_table')
-
-
-CONCAT_COCO_LABEL_MAP = {
-    1: 1,      # person
-    44: 2,     # bottle
-    48: 3,     # fork
-    49: 4,     # knife
-    62: 5,     # bed
-    63: 6,     # chair
-    67: 7,     # toilet
-    73: 8,     # tv
-    74: 9,     # laptop
-    76: 10,    # dining_table
-}
-
-
-
 # ----------------------- CONFIG CLASS ----------------------- #
 
 class Config(object):
@@ -187,29 +169,16 @@ dataset_base = Config({
     'joint': None
 })
 
+# adding synthetichomes here:
 SyntheticHome = dataset_base.copy({
-    'name': 'SyntheticHome',
-    'train_images': '../../../../../../../../media/adam/WinStorage/SyntheticHomes/train/data/',
-    'train_info':   '../../../../../../../../media/adam/WinStorage/SyntheticHomes/train/labels.json',
-    'valid_images': '../../../../../../../../media/adam/WinStorage/SyntheticHomes/val/data/',
-    'valid_info':   '../../../../../../../../media/adam/WinStorage/SyntheticHomes/val/labels.json',
-    # 'label_map': {0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:7},
-    'label_map': {0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:7, 7:8},
-    # Turns out the label map was mixed around, so I had to fix it.
-    # 'class_names': ("Bed", "Bench", "Chair", "Door", "Sofa", "Table", "Window_glass"),
-    'class_names': ("Bed", "Bench", "Chair", "Door", "Microwave", "Refrigerator", "Sofa", "Table"),
+    'name':'SyntheticHome',
+    'train_images': 'C:\\Users\\ryan\\Documents\\Instance-Segmentation-with-Unity-Interactive-Augmented-Reality\\SyntheticHomes\\Images_Output\\train\\data',
+    'train_info': 'C:\\Users\\ryan\\Documents\\Instance-Segmentation-with-Unity-Interactive-Augmented-Reality\\SyntheticHomes\\Images_Output\\train\\labels.json',
+    'valid_images':'C:\\Users\\ryan\\Documents\\Instance-Segmentation-with-Unity-Interactive-Augmented-Reality\\SyntheticHomes\\Images_Output\\val\\data',
+    'valid_info':'C:\\Users\\ryan\\Documents\\Instance-Segmentation-with-Unity-Interactive-Augmented-Reality\\SyntheticHomes\\Images_Output\\val\\labels.json',
+    'label_map':{0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8},
+    'class_names': ("Bed", "Bench", "Chair", "Door", "Microwave", "Refridgerator", "Sofa", "Table")
 })
-
-ConcatDataset = dataset_base.copy({
-    'name': 'ConcatDataset',
-    'train_images': './data/coco/images/',
-    'train_info':   './data/coco/annotations/instances_train2017.json',
-    'valid_images': './data/coco/images/',
-    'valid_info':   './data/coco/annotations/instances_val2017.json',
-    'label_map': CONCAT_COCO_LABEL_MAP,
-    'class_names': CONCAT_COCO_CLASSES,
-})
-
 
 coco2014_dataset = dataset_base.copy({
     'name': 'COCO 2014',
@@ -569,9 +538,7 @@ coco_base_config = Config({
     'max_num_detections': 100,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
-    # Slowing learning rate for custom dataset
-    'lr': 1e-5,
-    #'lr': 1e-3,
+    'lr': 1e-3,
     'momentum': 0.9,
     'decay': 5e-4,
 
@@ -767,15 +734,10 @@ coco_base_config = Config({
 
 yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
+
     # Dataset stuff
-    # 'dataset': coco2017_dataset,
-    # 'dataset': ConcatDataset,
-    # 'num_classes': len(ConcatDataset.class_names) + 1,
-    'dataset': SyntheticHome,
-    # 'dataset': coco_test_2017_dataset,
-    # 'num_classes': len(coco2017_dataset.class_names) + 1,
-    'num_classes': len(SyntheticHome.class_names) + 1,
-    # 'num_classes': len(coco2017_dataset.class_names) + 1,
+    'dataset': coco2017_dataset,
+    'num_classes': len(coco2017_dataset.class_names) + 1,
 
     # Image Size
     'max_size': 550,
@@ -786,8 +748,7 @@ yolact_base_config = coco_base_config.copy({
     'max_iter': 800000,
 
     'flow': flow_base,
-    # 'flow': None,
-
+    
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
         'selected_layers': list(range(1, 4)),
@@ -837,6 +798,18 @@ yolact_base_config = coco_base_config.copy({
     'torch2trt_flow_net_int8': False,
 
     'use_tensorrt_safe_mode': False,
+})
+
+#adding synthetichomes here
+synthetic_home_config = yolact_base_config.copy({
+    'name': 'synthetic_home',
+    #dataset stuff
+    'dataset': SyntheticHome,
+    # Class length is + 1 to contain background class
+    'num_classes': len(SyntheticHome.class_names) + 1,
+    # Slow the learning rate
+    'lr': 1e-4,
+    'max_iter': 40000
 })
 
 yolact_edge_config = yolact_base_config.copy({
@@ -972,15 +945,7 @@ yolact_resnet152_config = yolact_base_config.copy({
 
 yolact_edge_resnet50_config = yolact_edge_config.copy({
     'name': 'yolact_edge_resnet50',
-    'backbone': yolact_resnet50_config.backbone,
-
-    # For testing
-    'torch2trt_max_calibration_images': 100,
-    'torch2trt_backbone_int8': True,
-    'torch2trt_protonet_int8': True,
-    'torch2trt_fpn': True,
-    'torch2trt_prediction_module': True,
-    'use_fast_nms': False
+    'backbone': yolact_resnet50_config.backbone
 })
 
 yolact_edge_vid_resnet50_config = yolact_edge_vid_config.copy({
@@ -999,8 +964,7 @@ yolact_edge_youtubevis_resnet50_config = yolact_edge_youtubevis_config.copy({
 })
 
 # Default config
-cfg = yolact_edge_config.copy()
-# cfg = yolact_edge_resnet50_config.copy()
+cfg = synthetic_home_config.copy()
 
 def set_cfg(config_name:str):
     """ Sets the active config. Works even if cfg is already imported! """

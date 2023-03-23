@@ -3,8 +3,8 @@ from pysolotools.consumers import Solo
 import os
 
 
-sequence_path =  "../../../../media/adam/WinStorage/SyntheticHomes/solo_2"
-output_path = "../../../../media/adam/WinStorage/SyntheticHomes/output_2"
+sequence_path =  "C:\\Users\\ryan\\Documents\\SyntheticHomes\\Images_Output\\solo"
+output_path = "C:\\Users\\ryan\\Documents\\SyntheticHomes\\Images_Output\\output1"
 
 # List of all the images in the sequence
 

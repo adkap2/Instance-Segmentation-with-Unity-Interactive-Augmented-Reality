@@ -1,1 +1,0 @@
-start SyntheticHomes.exe config-file=SampleScenarioConfiguration.json --resolution=640x480 --output-path D:\SyntheticHomes

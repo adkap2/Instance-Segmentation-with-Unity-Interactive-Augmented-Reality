@@ -1183,9 +1183,6 @@ class Yolact(nn.Module):
     def load_weights(self, path, args=None):
         """ Loads weights from a compressed save file. """
         state_dict = torch.load(path, map_location='cpu')
-        print(f"Loading weights from '{path}'...")
-        # print(f"Original state dict keys: {list(state_dict.keys())}")
-
 
         # Get all possible weights
         cur_state_dict = self.state_dict()
@@ -1238,7 +1235,6 @@ class Yolact(nn.Module):
                 if state_dict[key].size() != cur_state_dict[key].size():
                     keys_mismatch.append(key)
                     state_dict[key] = cur_state_dict[key]
-                    print(f"Key size mismatch: {key}")
 
 
         # for compatibility with models with simpler architectures, remove unused weights.
@@ -1263,7 +1259,7 @@ class Yolact(nn.Module):
         try:
             self.load_state_dict(state_dict)
         except RuntimeError as e:
-            print('Ignoring " ' + str(e)+ '"')
+            print("RuntimeError while loading state_dict: {}".format(e))
 
 
         if not self.training:
@@ -1478,8 +1474,7 @@ class Yolact(nn.Module):
 
     def save_trt_cached_module(self, module, module_name, int8_mode=False, batch_size=1):
         module_path = self._get_trt_cache_path(module_name, int8_mode, batch_size)
-        # Not saving cached module for now
-        # torch.save(module.state_dict(), module_path)
+        torch.save(module.state_dict(), module_path)
 
     def trt_load_if(self, module_name, trt_fn, trt_fn_params, int8_mode=False, parent=None, batch_size=1):
         if parent is None: parent=self
@@ -1769,8 +1764,6 @@ class Yolact(nn.Module):
                     if cfg.share_prediction_module and pred_layer is not self.prediction_layers[0]:
                         pred_layer.parent = [self.prediction_layers[0]]
 
-                # Modifying the predicition layer for custom dataset
-                # p = pred_layer(pred_x)
                 p = pred_layer(pred_x.detach())
                 
                 for k, v in p.items():

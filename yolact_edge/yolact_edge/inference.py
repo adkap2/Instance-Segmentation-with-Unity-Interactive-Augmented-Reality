@@ -140,11 +140,11 @@ class YOLACTEdgeInference(object):
         cfg.dataset.calib_images = calib_images
         cfg.replace(cfg.copy(config_ovr))
 
+
+
         global args
-        args = parse_args("")
+        args = parse_args()
         args.dataset = dataset
-        # Modifying threshold
-        args.score_threshold = 0.12
         set_dataset(args.dataset)
         for item in args_ovr:
             if item in args:
@@ -168,7 +168,6 @@ class YOLACTEdgeInference(object):
             net = net.cuda()
             self.net = net
             print("Model ready for inference...")
-
 
     def prep_output(self, dets_out, img, h, w, undo_transform=True, class_color=False, mask_alpha=0.45):
         """
@@ -308,10 +307,5 @@ class YOLACTEdgeInference(object):
             plt.imshow(img_numpy)
             plt.title("YOLACT Edge Predictions")
             plt.show()
-        # if show:
-        #     cv2.imshow("YOLACT Edge Predictions", img_numpy)
-        #     cv2.waitKey(1000)
-        #     cv2.destroyAllWindows()
-
 
         return {"img": img_numpy, "class": classes, "score": scores, "mask": masks.squeeze()}
