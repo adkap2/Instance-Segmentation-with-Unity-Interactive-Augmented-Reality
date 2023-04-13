@@ -22,106 +22,127 @@
 [![MIT License][license-shield]][license-url]
 
 
+# Instance Segmentation with Unity VirtualHome Environment
+
+**Primary Author:** Adam Goldstein  
+**Co-Authors:** Ryan Cummings, Aishwarya Paruchuri, Krupa Kothadia  
+**Advisor:** Dr. Harry Li  
+**Affiliation:** San Jose State University, Department of Computer Engineering
 
 
-<!-- PROJECT LOGO -->
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+<div style="text-align:center"><img src = "videos/coco_trained_filtered_classes_trimmed.gif" width = 500px"/></div>
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## Project Overview
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-
-This document outlines the steps to use YolactEdge, a fully convolutional edge computing model for real-time instance segmentation, on a custom dataset for processing indoor environments. The dataset is synthetically generated using Unity's SyntheticHome application and requires modifications to various training files, along with a pretrained weights file. Mean Average Precision (mAP) is the primary precision metric used for training and evaluation.
-
-Additionally, this readme provides instructions for installing and using Unity's VirtualHome program, which simulates multi-agent tasks in home-like environments. The readme also includes details on the Unity Synthetic Homes dataset generator, which produces photorealistic images for use with computer vision models, and FiftyOne, an open-source tool used for curating and modifying image datasets for training computer vision models.
-
-## IP Socket Communication
-
-To perform real-time object detection and segmentation on frames generated within the Unity VirtualHome environment, I utilized IP socket communication with the NetMQ Library to exchange data between the C# (Unity) VirtualHome Application and a Python (Yolact_Edge) program. I added a script to the (Unity) Virtual Agents application to capture each frame and send them over the socket to the Yolact_Edge inferencing program for processing.
-
-To optimize the transfer of data, I implemented file compression using the GZIP algorithm before sending each frame over the socket. This reduced the size of the data being transferred, resulting in faster processing times and reduced bandwidth requirements.
-
-The IP socket communication was implemented using the TCP/IP protocol, which ensured reliable and ordered data transfer between the two applications. The C# application acted as the client, while the Python application acted as the server, listening for incoming data on a specified port.
-
-Once the Yolact_Edge inferencing program received the compressed frame over the socket, it decompressed the data, performed instance segmentation using the specified YolactEdge trained weights and object classes. Then, using OpenCV, it rendered the results within a generated window. 
-
-Overall, the use of IP socket communication and file compression enabled efficient and seamless communication between the two applications, facilitating real-time inference from frames generated within the Unity VirtualHome environment.
-eal-time instance segmentation inference was performed within the Unity VirtualHome Environment
-
-#### The GIFs below display each frame generated from the Unity VirtualHome Environment, after undergoing real-time instance segmentation inference and post-processing.
+- **Objective**: Develop a real-time object detection and segmentation system for Unity VirtualHome to enhance computer vision applications in virtual environments
+- **Method**: Utilize YolactEdge, a state-of-the-art instance segmentation algorithm implemented with PyTorch, to perform real-time object detection and segmentation on frames generated within the Unity VirtualHome environment
+- **Synthetic Data**: Generate and curate synthetic data for training the YolactEdge model using Unity SyntheticHomes and FiftyOne dataset processing tools
+- **Integration**: Optimize YolactEdge for real-time performance within Unity using TCP/IP socket communication via NetMQ and ZeroMQ messaging libraries
 
 
-<table>
-  <tr>
-    <td align="center" style="padding: 10px;">
-      <img src="videos/coco_trained_filtered_classes_trimmed.gif" alt="YOLACT pretrained model from COCO Dataset" width="400" height="350"><br>
-      YOLACT pretrained model from the COCO Dataset
-    </td>
-    <td align="center" style="padding: 10px;">
-      <img src="videos/adam_trained_original.gif" alt="Custom trained model from Synthetic Indoor Home environment dataset" width="400" height="350"><br>
-      Custom trained model from a Synthetic dataset
-    </td>
-  </tr>
-</table>
+### YolactEdge: A State-of-the-Art Instance Segmentation Algorithm
+- **State-of-the-art-performance**: YolactEdge provides competitive instance segmentation results compared to other algorithms, making it a suitable choice for real-time applications
+- **Real-time Processing**: YolactEdge is designed for efficient, real-time object detection and segmentation, which is critical for seamless integration into the Unity VirtualHome environment
+- **TensorRT Optimization**: YolactEdge leverages GPU acceleration and is compatible with NVIDIA's TensorRT, a high-performance deep learning inference optimizer, enabling faster processing
+- **Lightweight architecture**: The model's architecture is less complex and resource-intensive than alternative approaches, making it ideal for implementation in a real-time system
 
-### Notes on the Trained Models:
+<div style="text-align:center"><img src = "videos/yolact_edge_example_3.gif" width = "400" height="250"/></div>
 
+
+### Unity VirtualHome: A Versatile Environment for Computer Vision Applications
+
+- **Immersive Simulation**: Unity VirtualHome offers a realistic and customizable 3D environment that replicates various indoor scenarios, ideal for developing and testing computer vision applications
+- **Rapid Prototyping**: The platform enables quick development and iteration of virtual scenarios, reducing the time and resources needed for real-world testing
+
+<div style="display:flex; justify-content:center;">
+<img src = "videos/Virtualhome_actions.gif" width = "50%" height="250"/>
+<img src = "videos/VirtualHomemultimodal.gif" width = "50%" height="250"/>
+</div>
+
+### System Architecture
+
+<div style="display:flex;">
+  <ul>
+    <li><strong>Architecture Diagram</strong> : Shows interface between Python script and Unity VirtualHome for object detection and segmentation with YolactEdge</li>
+    <li><strong>Communication</strong>: with NetMQ used for TCP/IP Socket Communication to send compressed frames from Unity to Python script</li>
+    <li><strong>YolactEdge</strong>: model loaded for inference and OpenCV used to display segmented frames, enabling real-time object detection and segmentation in virtual environment</li>
+  </ul>
+  <img src="images/Architecture_Diagram.png" style="width:250px; padding-left:10px; margin-left:auto;">
+</div>
+
+### Unity SyntheticHomes
+
+- **Cost-effective**: Training on synthetic data reduces the need for expensive and time-consuming real-world data collection
+- **Customizable**: Synthetic data generation allows for control over the scenarios, objects, and conditions, enabling targeted model training
+- **Scalability**: Large volumes of diverse synthetic data can be generated quickly, providing a rich training set for the model
+
+<img src = "images/SyntheticHomes.jpg">
+
+
+### FiftyOne Data Annotation Tools
+
+- **Efficient Annotation**: FiftyOne streamlines the process of labeling and annotating synthetic data, ensuring accurate and consistent training input
+- **Quality Control**: FiftyOne enables easy visualization and inspection of annotated data, allowing for quality checks and refinements
+
+<div style="text-align:center"><img src = "images/FiftyOne.png" style="width:500px;"></div>
+
+### Integration with VirtualHome using TCP/IP Socket Communication
+
+- **Seamless data transfer**: Implementing TCP/IP socket communication with NetMQ and ZeroMQ messaging libraries enables efficient data exchange between the Unity application and the YolactEdge Python program
+- **Real-time Performance**: This integration approach supports real-time object detection and segmentation within the Unity VirtualHome environment
+
+<div style="text-align:center"><img src = "videos/Unity_VirtualHome.gif" style="width:500px;"></div>
+
+
+### Training Results
+
+The Mean Average Precision (mAP) metric is used to evaluate the performance of the YolactEdge model on the Unity SyntheticHomes dataset
+
+### 
+
+
+- **Custom Trained Model**: The model was trained on the Unity SyntheticHomes dataset for 40,000 iterations, achieving an overall mask mAP of 30.6
+<div style="text-align:center"><img src = "images/Custom_trained_model_Scratch.png" style="width:500px;"></div>
+
+- **Pretrained Model**: The model was pretrained trained on the COCO dataset and then resumed on SyntheticHomes Data, achieving an overall mask mAP of 56.8
+
+<div style="text-align:center"><img src = "images/Model_Resumed_From_Pre_trained_COCO.png" style="width:500px;"></div>
 
 
 ### Built With
 
-This section lists major frameworks and libraries that were used to create the project. The following plugins were used:
 
-
-* [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=OpenCV&logoColor=white)](https://opencv.org/)
-  - Open-source computer vision and machine learning software library
-* [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=PyTorch&logoColor=white)](https://pytorch.org/)
-  *  Open-source deep learning framework used for computer vision tasks
-* [![Unity](https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=Unity&logoColor=white)](https://unity.com/)
-  * Cross-platform game engine used for developing 2D and 3D games and simulations
-* [![Unity Virtual Home](https://img.shields.io/badge/Unity_Virtual_Home-003146?style=for-the-badge&logo=Unity&logoColor=white)](https://www.virtual-home.org/)
-  * Research platform for simulating domestic environments with a variety of interactive objects
-
-* [![Unity Perception](https://img.shields.io/badge/Unity_Perception-000000?style=for-the-badge&logo=unity&logoColor=white)](https://docs.unity3d.com/Packages/com.unity.perception@1.0/manual/index.html)
-  * Computer vision and machine learning toolkit for Unity used for developing perception-driven applications
-* [![FiftyOne](https://img.shields.io/badge/FiftyOne-008CBA?style=for-the-badge&logo=fiftyone&logoColor=white)](https://voxel51.com/fiftyone/)
-  * Python package for exploring and analyzing computer vision datasets
-* [![YOLACT](https://img.shields.io/badge/YOLACT-FFA500?style=for-the-badge&logo=yolact&logoColor=white)](https://github.com/dbolya/yolact/)
-  * Real-time instance segmentation algorithm that detects and segments objects in images and videos
-* [![YOLACTEdge](https://img.shields.io/badge/YOLACTEdge-4B0082?style=for-the-badge&logo=yolactedge&logoColor=white)](https://github.com/razorx89/YOLACTEdge/)
-  * Lightweight version of YOLACT that is optimized for edge devices and embedded systems
-* [![ZeroMQ](https://img.shields.io/badge/ZeroMQ-D91E18?style=for-the-badge&logo=ZeroMQ&logoColor=white)](https://zeromq.org/)
-  * High-performance asynchronous messaging library that facilitates communication between distributed applications
+<ul style="display:flex; flex-wrap:wrap; list-style:none;">
+  <li style="margin-right:10px;">
+    <a href="https://opencv.org/"><img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=OpenCV&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=PyTorch&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://unity.com/"><img src="https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=Unity&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://www.virtual-home.org/"><img src="https://img.shields.io/badge/Unity_Virtual_Home-003146?style=for-the-badge&logo=Unity&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://docs.unity3d.com/Packages/com.unity.perception@1.0/manual/index.html"><img src="https://img.shields.io/badge/Unity_Perception-000000?style=for-the-badge&logo=unity&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://voxel51.com/fiftyone/"><img src="https://img.shields.io/badge/FiftyOne-008CBA?style=for-the-badge&logo=fiftyone&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://github.com/dbolya/yolact/"><img src="https://img.shields.io/badge/YOLACT-FFA500?style=for-the-badge&logo=yolact&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://github.com/razorx89/YOLACTEdge/"><img src="https://img.shields.io/badge/YOLACTEdge-4B0082?style=for-the-badge&logo=yolactedge&logoColor=white"></a>
+  </li>
+  <li style="margin-right:10px;">
+    <a href="https://zeromq.org/"><img src="https://img.shields.io/badge/ZeroMQ-D91E18?style=for-the-badge&logo=ZeroMQ&logoColor=white"></a>
+  </li>
+</ul>
 
 
 
@@ -150,33 +171,33 @@ To recreate the project, follow the instructions located in the documents folder
   * Windows 10
 
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- LICENSE -->
-## License
+### License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- CONTACT -->
-## Contact
+### Contact
 
 Email - [@adkap2](mailto:adkap2@gmail.com)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+### Acknowledgments
 
-```markdown
 
-```
+* [YolactEdge](https://github.com/razorx89/YOLACTEdge/): We would like to acknowledge the use of YolactEdge in our work. YolactEdge was developed by Haotian Liu, Rafael A. Rivera Soto, Fanyi Xiao, and Yong Jae Lee, and is based on the YOLACT algorithm presented by Daniel Bolya, Chong Zhou, Fanyi Xiao, and Yong Jae Lee in their 2019 ICCV paper.
+* [VirtualHome](http://virtual-home.org/): We would like to acknowledge the use of VirtualHome, a household activity simulator developed by Xavier Puig, Kevin Ra, Marko Boben, Jiaman Li, Tingwu Wang, Sanja Fidler, and Antonio Torralba, in our work.
+* [SyntheticHomes](https://github.com/Unity-Technologies/SyntheticHomes): We would like to acknowledge the use of Unity Synthetic Homes, a platform developed by Unity Technologies, in our work. Synthetic Homes provides a powerful tool for creating virtual household environments for training AI models.
+
+
+
+
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
