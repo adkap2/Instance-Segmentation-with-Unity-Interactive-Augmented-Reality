@@ -44,3 +44,9 @@ The implementation of Unity VirtualHome, a platform that simulates household act
 [2] “The gzip home page,” Gzip.org. [Online]. Available: https://www.gzip.org/. [Accessed: 09-May-2023].
 [3] zeromq, "get-started," 2022. [Online]. Available: https://zeromq.org/get-started/.
 [4] H. Liu, R. A. R. Soto, F. Xiao, and Y. J. Lee, “YolactEdge: Real-time instance segmentation on the edge,” arXiv [cs.CV], 2020.
+
+# Acknowledgements
+
+YolactEdge: We would like to acknowledge the use of YolactEdge in our work. YolactEdge was developed by Haotian Liu, Rafael A. Rivera Soto, Fanyi Xiao, and Yong Jae Lee, and is based on the YOLACT algorithm presented by Daniel Bolya, Chong Zhou, Fanyi Xiao, and Yong Jae Lee in their 2019 ICCV paper.
+VirtualHome: We would like to acknowledge the use of VirtualHome, a household activity simulator developed by Xavier Puig, Kevin Ra, Marko Boben, Jiaman Li, Tingwu Wang, Sanja Fidler, and Antonio Torralba, in our work.
+SyntheticHomes: We would like to acknowledge the use of Unity Synthetic Homes, a platform developed by Unity Technologies, in our work. Synthetic Homes provides a powerful tool for creating virtual household environments for training AI models.
