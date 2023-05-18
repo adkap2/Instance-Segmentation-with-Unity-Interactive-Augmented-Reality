@@ -38,6 +38,35 @@ The integration of NetMQ allowed for a reliable and fast communication channel b
 
 The implementation of Unity VirtualHome, a platform that simulates household activities with humanoid avatars. It demonstrates how to generate and run an agent's script to perform tasks within VirtualHome using the Python API. A code snippet is provided to show the process of interacting with objects and executing household tasks, such as turning on lights, moving objects, and operating appliances. The integration of YolactEdge for object detection and segmentation in real-time video feeds is also discussed, demonstrating the potential for simulating and testing robotic applications in a realistic home environment.
 
+# Built With
+
+This section lists major frameworks and libraries that were used to create the project. The following plugins were used:
+
+
+* [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=OpenCV&logoColor=white)](https://opencv.org/)
+  - Open-source computer vision and machine learning software library
+* [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=PyTorch&logoColor=white)](https://pytorch.org/)
+  *  Open-source deep learning framework used for computer vision tasks
+* [![Unity](https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=Unity&logoColor=white)](https://unity.com/)
+  * Cross-platform game engine used for developing 2D and 3D games and simulations
+* [![Unity Virtual Home](https://img.shields.io/badge/Unity_Virtual_Home-003146?style=for-the-badge&logo=Unity&logoColor=white)](https://www.virtual-home.org/)
+  * Research platform for simulating domestic environments with a variety of interactive objects
+
+* [![Unity Perception](https://img.shields.io/badge/Unity_Perception-000000?style=for-the-badge&logo=unity&logoColor=white)](https://docs.unity3d.com/Packages/com.unity.perception@1.0/manual/index.html)
+  * Computer vision and machine learning toolkit for Unity used for developing perception-driven applications
+* [![FiftyOne](https://img.shields.io/badge/FiftyOne-008CBA?style=for-the-badge&logo=fiftyone&logoColor=white)](https://voxel51.com/fiftyone/)
+  * Python package for exploring and analyzing computer vision datasets
+* [![YOLACT](https://img.shields.io/badge/YOLACT-FFA500?style=for-the-badge&logo=yolact&logoColor=white)](https://github.com/dbolya/yolact/)
+  * Real-time instance segmentation algorithm that detects and segments objects in images and videos
+* [![YOLACTEdge](https://img.shields.io/badge/YOLACTEdge-4B0082?style=for-the-badge&logo=yolactedge&logoColor=white)](https://github.com/razorx89/YOLACTEdge/)
+  * Lightweight version of YOLACT that is optimized for edge devices and embedded systems
+* [![ZeroMQ](https://img.shields.io/badge/ZeroMQ-D91E18?style=for-the-badge&logo=ZeroMQ&logoColor=white)](https://zeromq.org/)
+  * High-performance asynchronous messaging library that facilitates communication between distributed applications
+
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 # Citations
 
 [1] Unity Technologies, “Machine Learning Agents,” Unity. [Online]. Available: https://unity.com/products/machine-learning-agents. [Accessed: 30-Nov-2022].
