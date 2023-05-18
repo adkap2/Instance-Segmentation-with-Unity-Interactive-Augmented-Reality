@@ -6,6 +6,8 @@ This project is primarily focused on the navigation of an autonomous agent withi
 
 # Project Architecture
 
+<div style="text-align:center"><img src = "Architecture.png" style="width:500px;"></div>
+
 The Python script generates the VirtualHome environment and agent, followed by the creation of a script containing the tasks for the agent to perform within the virtual environment. Communication between the Python script and the Unity VirtualHome environment is established through an HTTP Unity Communication protocol. On the Unity side, an HTTP Unity receiver processes the incoming message from the Python script. This triggers the execution of the Unity VirtualHome simulation, where the agent performs the specified actions in the virtual environment. A Recorder class captures the main camera frame, which is then stored as a byte array in the Unity backend. To optimize data transfer efficiency, the frame is compressed using the GZIP compression algorithm [2 (n.a. n.d.)]. The compressed frame is then sent from the Unity environment to the Python script using TCP/IP Socket Communication facilitated by the NetMQ library. Upon receiving the frame, the Python script uses the ZeroMQ (ZMQ) library [3 (n.d. 2022)] to handle the TCP/IP Socket Communication. The GZIP-compressed frame is decompressed, and the YolactEdge [4 (Liu 2020)] pretrained model is loaded for inference. The YolactEdge instance segmentation algorithm processes the received frame, and the resulting segmented frame is displayed using the OpenCV library.
 
 #  TCP/IP Socket Communication
