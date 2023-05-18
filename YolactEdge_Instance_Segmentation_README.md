@@ -201,7 +201,7 @@ c. Copy the filename: synthetic_home_851_40000.pth
 d. From yolact_edge base dir, call eval.py to evaluate the model with the specified weights file
 python eval.py --config=synthetic_home_config --trained_model=weights/synthetic_home_851_40000.pth --score_threshold=0.15 --top_k=15
 
-Citations
+# Citations
 [1]
 D. Bolya, C. Zhou, F. Xiao, and Y. J. Lee, “YOLACT: Real-Time Instance Segmentation,” in 2019 IEEE/CVF International Conference on Computer Vision (ICCV), 2019.
 [2]
