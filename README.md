@@ -43,15 +43,16 @@ The implementation of Unity VirtualHome, a platform that simulates household act
 # Analysis and Results
 
 The first model was comparable to YOLACT and was trained using the same hardware. The mean average precision (mAP) for this model is seen below.
-
+<div style="text-align:center"><img src = "Result_YOLACT.png" style="width:500px;"></div>
 
 For the second model, we leveraged San Jose State University's High-Performance Computing (HPC) resources during the training process. This model achieved mAP results seen below.
+<div style="text-align:center"><img src = "Result_HPC.png" style="width:500px;"></div>
 
 The third model utilized the COCO dataset and resumed from the YOLACTEdge weights. The mAP for this model is
-
+<div style="text-align:center"><img src = "Result_COCO.png" style="width:500px;"></div>
 
 Below is the plot of Segmentation Loss Vs Epoch
-
+<div style="text-align:center"><img src = "SegmentationLossVsEpochPlot.png" style="width:500px;"></div>
 
 # Built With
 
