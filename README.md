@@ -40,6 +40,19 @@ The integration of NetMQ allowed for a reliable and fast communication channel b
 
 The implementation of Unity VirtualHome, a platform that simulates household activities with humanoid avatars. It demonstrates how to generate and run an agent's script to perform tasks within VirtualHome using the Python API. A code snippet is provided to show the process of interacting with objects and executing household tasks, such as turning on lights, moving objects, and operating appliances. The integration of YolactEdge for object detection and segmentation in real-time video feeds is also discussed, demonstrating the potential for simulating and testing robotic applications in a realistic home environment.
 
+# Analysis and Results
+
+The first model was comparable to YOLACT and was trained using the same hardware. The mean average precision (mAP) for this model is seen below.
+
+
+For the second model, we leveraged San Jose State University's High-Performance Computing (HPC) resources during the training process. This model achieved mAP results seen below.
+
+The third model utilized the COCO dataset and resumed from the YOLACTEdge weights. The mAP for this model is
+
+
+Below is the plot of Segmentation Loss Vs Epoch
+
+
 # Built With
 
 This section lists major frameworks and libraries that were used to create the project. The following plugins were used:
